@@ -604,6 +604,197 @@
     .form-submit:hover { background: var(--brown-warm); transform: translateY(-1px); }
     .form-submit:active { transform: translateY(0); }
 
+    /* ═══════════════════════════════════════════════════════════
+       MOBILE OPTIMISATION
+       All rules below are scoped to ≤ 768 px / ≤ 480 px.
+       Every desktop rule above this comment is untouched.
+    ═══════════════════════════════════════════════════════════ */
+
+    /* Hamburger button — hidden on desktop, shown on mobile */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 48px;
+      height: 48px;
+      padding: 10px 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+
+      /* ── Navigation ── */
+      #nav {
+        padding: 14px 20px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      #nav.scrolled { padding-top: 12px; padding-bottom: 12px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        background: rgba(30,31,36,0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255,255,255,0.07);
+        margin-top: 10px;
+        padding: 6px 0 12px;
+        order: 3;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: flex;
+        align-items: center;
+        padding: 14px 20px;
+        min-height: 52px;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+      .nav-links a:hover { background: rgba(255,255,255,0.04); color: var(--white); }
+      .nav-links li:last-child a { border-bottom: none; }
+
+      /* ── Hero ── */
+      .hero {
+        min-height: 100svh;
+        padding: 120px 24px 72px;
+        align-items: flex-start;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-globe-wrap { display: none; }
+      .hero-eyebrow { margin-bottom: 16px; font-size: 10px; }
+      .hero-heading {
+        font-size: clamp(36px, 10vw, 52px);
+        margin-bottom: 20px;
+        line-height: 1.08;
+      }
+      .hero-sub {
+        font-size: 14px;
+        max-width: 100%;
+        margin-bottom: 32px;
+        line-height: 1.8;
+      }
+      .hero-cta {
+        width: 100%;
+        justify-content: center;
+        padding: 17px 24px;
+        min-height: 52px;
+        font-size: 12px;
+      }
+
+      /* ── Dark strip ── */
+      .dark-strip {
+        grid-template-columns: 1fr;
+        padding: 48px 24px;
+        gap: 0;
+      }
+      .strip-item {
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .strip-item:last-child { border-bottom: none; padding-bottom: 0; }
+      .strip-item:first-child { padding-top: 0; }
+
+      /* ── Photo banner ── */
+      .photo-banner { height: 220px; }
+      .photo-banner img { object-position: center center; }
+
+      /* ── What We Do ── */
+      .what-we-do {
+        grid-template-columns: 1fr;
+        padding: 64px 24px;
+        gap: 40px;
+      }
+      .wwd-left h2 { font-size: clamp(28px, 8vw, 38px); }
+      .wwd-left p { font-size: 14px; }
+      .service-row { padding: 18px 0; }
+      .service-row-text h4 { font-size: 14px; }
+      .service-row-text p { font-size: 13px; }
+
+      /* ── Commodities ── */
+      .commodities-section { padding: 64px 24px; }
+      .section-title { font-size: clamp(24px, 7vw, 34px); margin-bottom: 28px; }
+      .commodities-grid { grid-template-columns: 1fr; gap: 4px; }
+      .commodity-card { aspect-ratio: 16 / 10; }
+      .commodity-card-body { padding: 22px 20px; }
+      .commodity-card-body h3 { font-size: 1.2rem; }
+      .commodity-card-body p { font-size: 12px; }
+      .commodity-link { min-height: 44px; padding-top: 6px; }
+
+      /* ── Contact ── */
+      .contact-section { padding: 64px 24px; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        margin-top: 36px;
+      }
+      .contact-info p { margin-bottom: 24px; }
+      .contact-info a {
+        display: inline-block;
+        min-height: 44px;
+        line-height: 44px;
+      }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      /* 16 px prevents iOS auto-zoom on focus */
+      input, textarea, select { font-size: 16px; padding: 14px; }
+      textarea { height: 120px; }
+      .form-submit {
+        width: 100%;
+        padding: 17px;
+        min-height: 52px;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      /* ── Footer ── */
+      footer {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 32px;
+        gap: 28px;
+        text-align: center;
+      }
+      .footer-logo { justify-content: center; }
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+        justify-content: center;
+      }
+      .footer-copy { text-align: center; }
+    }
+
+    /* Extra-small phones */
+    @media (max-width: 480px) {
+      #nav { padding: 12px 16px; }
+      .hero { padding: 108px 16px 60px; }
+      .dark-strip { padding: 40px 16px; }
+      .what-we-do { padding: 56px 16px; }
+      .commodities-section { padding: 56px 16px; }
+      .contact-section { padding: 56px 16px; }
+      footer { padding: 36px 16px 28px; }
+      .hero-heading { font-size: clamp(32px, 10vw, 44px); }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--gray);
@@ -662,7 +853,12 @@
       <span>Adonix Trade</span>
     </div>
   </a>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#what-we-do">What We Do</a></li>
     <li><a href="#commodities">Commodities</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -874,6 +1070,25 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks   = document.getElementById('nav-links');
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) closeMenu();
+  });
 
   // Form submit → mailto
   document.querySelector('form').addEventListener('submit', e => {
