@@ -1,0 +1,16 @@
+# Claude Code internal files
+CLAUDE.md
+serve.mjs
+claude web design md file.pages
+
+# Reference / working screenshots
+Brand_asserts/temporary screenshots/
+
+# Claude Code settings
+.claude/
+
+# Unused/replaced images
+vecteezy_large-cargo-ship-sailing-on-calm-sea-in-foggy-weather_57502664.jpg
+
+# macOS system files
+.DS_Store
